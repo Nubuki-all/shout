@@ -61,7 +61,8 @@ func Connect(cfg *Config) (*Writer, error) {
 	C.free(unsafe.Pointer(cstr))
 
 	// setting stream format
-	C.shout_set_format(shout, C.uint(cfg.Format))
+	// C.shout_set_format(shout, C.uint(cfg.Format))
+	C.shout_set_content_format(shout, C.uint(cfg.Format), C.SHOUT_USAGE_AUDIO, nil)
 	// setting stream protocol
 	C.shout_set_protocol(shout, C.uint(cfg.Proto))
 
